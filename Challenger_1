@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+
+//Crie um algoritimo que consiga identificar se a soma do valor de cada vetor é igual ao valor especificado
+//Exemplo 1: VetorA [1,2,3] VetorV [3,4,9] ValorSoma 10 - Verdadeiro porque 1 + 9 = 10
+//Exemplo 2: VetorA [11,2,0] VetorV [3,6,13] ValorSoma 10 - Falso porque nenhuma combinação de somar é igual a 10
+public class Program
+{
+	public static void Main()
+	{
+		var vetoresA = new int[] { 0, 2, 3, 10 };
+			
+		var vetoresB = new int[] { -5, 7, 3, 1000 };
+		
+		var valorSoma = -4;
+		
+		var existeValorSoma = Validador.ValidaSomaVetores(vetoresA, vetoresB, valorSoma);
+			
+		if(existeValorSoma)
+		{
+			Console.WriteLine("Valor da Soma Existe");
+		}
+		else
+		{
+			Console.WriteLine("Valor da Soma Não Existe");
+		}
+	}
+}
+
+public static class Validador
+{
+	public static bool ValidaSomaVetores(int[] vetoresA, int[] vetoresB, int valorSoma)
+	{
+		HashSet<int> complementos = new HashSet<int>();
+		
+		foreach (int vetorA in vetoresA)
+		{
+    		complementos.Add(valorSoma - vetorA);
+		}
+		
+		foreach (int vetoreB in vetoresB)
+		{
+    		if(complementos.Contains(vetoreB)) return true;
+		}
+		
+		return false;
+	}
+}
