@@ -35,12 +35,12 @@ public static class Validador
 		
 		foreach (int vetorA in vetoresA)
 		{
-    		complementos.Add(valorSoma - vetorA);
+    			complementos.Add(valorSoma - vetorA);
 		}
 		
 		foreach (int vetoreB in vetoresB)
 		{
-    		if(complementos.Contains(vetoreB)) return true;
+    			if(complementos.Contains(vetoreB)) return true;
 		}
 		
 		return false;
